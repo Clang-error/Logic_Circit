@@ -2,18 +2,34 @@
 // Created by GoHyeonSeok on 26. 3. 17
 //
 #include <stdio.h>
+#include <stdlib.h>
 #include "Calc.h"
 
 
-void decimal_to_binary(int D,char *r) {
-    printf("\n%s의 2진수: ",r); //부호화 절댓값(2진법)변환로직
-    int temp = D;
-    int bit[8]={0,};
-    int mag[7]={0,};
-    if (D < 0) { //만약 음수가 입력됐으면, 0번째 인덱스를 1로 변경
-        temp = -D;
-        bit[0] = 1;
+void decimal_to_binary(int decimal,char *r) {
+
+    int temp = 0;
+    int sign = 0;
+    int count=0;
+    if (decimal < 0) {
+        temp = -decimal;
+        sign = 1;
+    } else temp = decimal;
+
+    while (temp > 0) {
+        temp /= 2;
+        count++;
     }
+
+    if (decimal < 0) { // 사용한 값 다시 채우기
+        temp = -decimal;
+    } else temp = decimal;
+
+    int *bit = (int *)malloc(sizeof(int) * (count+1));
+    int *one = (int *)malloc(sizeof(int) * (count+1));
+    int *two = (int *)malloc(sizeof(int) * (count+1));
+
+
     //2 8 16 -> 10 -> 2 8 16
     // while (n >= 0) { //n의 값이 0보다 크거나 같으때까지 루프
     //     if (D >= (1 << n)) { // D가 2의 n승보다 크거나 같다면.
@@ -25,48 +41,56 @@ void decimal_to_binary(int D,char *r) {
     //     n--;
     // }
 
-    for (int i = 6; i >= 0; i--) { //받은 수 2진수로 변환하는 로직
-        mag[i] = temp % 2;
+
+    for (int i = count; i >= 1; i--) { //받은 수 10진수로 변환하는 로직
+        bit[i] = temp % 2;
         temp /= 2;
     }
 
-    for (int i = 0; i < 7; i++) {
-        bit[i + 1] = mag[i]; //부호비트가 저장된 0번째 인덱스를 건드리지않기위해 bit +1, 변환된 2진값을 bit에 저장
-    }
-
-    for (int i=0; i<=7; i++) {
-        printf("%d",bit[i]);
-    }
-
-    int one[8]={0,};
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i <= count; i++) { //bit데이터값을 one배열로 복사
         one[i] = bit[i];
     }
 
-    for (int i=0; i<=7; i++) { //1의보수 변환 및 출력 로직
+    for (int i=0; i<=count; i++) { //1의보수 변환 및 출력 로직
         if (one[i] == 1) {one[i] = 0;}
         else {one[i] = 1;}
     }
-    printf("\n1의 보수: ");
-    for (int i=0; i<=7; i++) {
-        printf("%d",one[i]);
-    }
-
-    int j =6; //2의 보수 변환 및 출력 로직
-    int two[8]={0,};
-    for (int i = 0; i < 8; i++) {
+    //2의 보수 변환 및 출력 로직
+    for (int i = 0; i <= count; i++) { //one데이터값을 two배열로 복사
         two[i] = one[i];
     }
 
     int carry = 1;
-    for (int i = 7; i >= 1; i--) {
+    for (int i = count; i >= 1; i--) {
         int sum = two[i] + carry;
         two[i] = sum % 2;
         carry = sum / 2;
     }
 
-    printf("\n2의 보수: ");
-    for (int i=0; i<=7; i++) {
-        printf("%d",two[i]);
-    }printf("\n\n");
+    if (sign == 1) {
+        printf("\n|%d의 2진수 변환과정|",decimal);
+        printf("\n1. 양수 2진수|절대값|: ");
+        for (int i=0; i<=count; i++) printf("%d",bit[i]);
+        printf(" |%d비트: 부호 0 + 데이터 %d|",count+1,count);
+        printf("\n2. 1의 보수: ");
+        for (int i=0; i<=count; i++) printf("%d",one[i]);
+        printf("\n3. 2의 보수: ");
+        for (int i=0; i<=count; i++) printf("%d",two[i]);
+        printf(" (최종 %d의 모습) ",decimal);
+        printf("\n\n");
+
+    }else {
+        printf("\n|%d의 2진수 변환과정|",decimal);
+        printf("\n2진수: ");
+        for (int i=0; i<=count; i++) printf("%d",bit[i]);
+        printf(" |%d비트: 부호 0 + 데이터 %d|",count+1,count);
+        printf("\n1의 보수: ");
+        for (int i=0; i<=count; i++) printf("%d",one[i]);
+        printf("\n2의 보수: ");
+        for (int i=0; i<=count; i++) printf("%d",two[i]);
+        printf("\n\n");
+    }
+    free(bit);
+    free(one);
+    free(two);
 }

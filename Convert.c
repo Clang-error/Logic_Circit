@@ -4,17 +4,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int convert() { // convert 함수기능 main.c로 기능 이전됨.
-    int r=0;//비트수 제한없어지고
+void convert() { // convert 함수기능 main.c로 기능 이전됨.
     int num;
-    char radix[8] ={0,};
+    int r;
+    char radix[10] ={0,};
     while (r != 5) {
+        r=0;//비트수 제한없어지고
+        int sign =0;
         int decimal = 0; //10진수 0으로 초기화
+        printf("(참고) 입력한 진수데이터는 10진수로 변환 후 연산됩니다.\n");
         printf("\n2,8,10,16 진수 중 하나 입력 (5 입력시 종료): ");
         scanf("%d",&r);
+        printf("양수(0)와 음수(1) 중 선택:");
+        scanf("%d",&sign);
+        if (sign != 0 && sign != 1) {
+            printf("0 과 1 중 하나를 선택해주세요.");
+            continue;
+        }
         if (r == 2 || r == 8 || r == 10 || r == 16) {
             if (r == 2) { //2진수 입력 정수->문자열로 변환작업하기
-                printf("2진수 입력: ");
+                printf("|절대값|2진수 입력: ");
                 scanf("%d", &num);
 
                 int temp = num;
@@ -28,26 +37,31 @@ int convert() { // convert 함수기능 main.c로 기능 이전됨.
                     temp /= 10;
                     base *= 2;
                 }
+                if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%d", num);
             } else if (r == 8) {
                 printf("8진수 입력: ");
                 scanf("%o", &num); //o형으로 입력받았으면 10진수로 자동변환되어있음
                 decimal = num;
+                if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%o", decimal);
             } else if (r == 10) {
-                printf("10진수 입력: ");
+                printf("|절대값|10진수 입력: ");
                 scanf("%d", &num);
                 decimal = num;
+                if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%d", decimal);
             } else if (r == 16) {
                 printf("16진수 입력: ");
                 scanf("%x", &num);
                 decimal = num;
+                if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%X", decimal);
             } else {
                 printf("표현하는 진수중 하나를 입력해주세요.");
 
             }
+            decimal_to_binary(decimal,radix);
             decimal_to_octal(decimal,radix);
             decimal_to_complement(decimal,radix);
             decimal_to_hexadecimal(decimal,radix);
@@ -64,5 +78,4 @@ int convert() { // convert 함수기능 main.c로 기능 이전됨.
             // }
         }
     }
-    return 0;
 }
