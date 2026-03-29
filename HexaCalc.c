@@ -21,10 +21,10 @@ void decimal_to_hexadecimal(int Decimal,char *r) {
     //15의보수 구하는 법 찾기.
     printf("15의보수: ");
    for (int i=0; i<strlen(hex_str); i++) {
-       if (hex_str[i] >= '0' && hex_str[i] <= '9') {
+       if (hex_str[i] >= '0' && hex_str[i] <= '9') { //'0'의 아스키값은 48, '9'의 아스키값은 57
            val = hex_str[i] - '0';
        } else {
-           val = hex_str[i] - 'A' + 10;
+           val = hex_str[i] - 'A' + 10; //'A'는 아스키값이 65이기에 +10을 넣어 실제 숫자값으로 변환.
        }
        int res = 15 - val;
 
@@ -54,4 +54,4 @@ void decimal_to_hexadecimal(int Decimal,char *r) {
         printf("%c",hex_str[i]);
     }
 }
-//8진수랑 16진수 음으로 표현하는 거 확인하기
+

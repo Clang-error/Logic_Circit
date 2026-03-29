@@ -3,7 +3,6 @@
 //
 
 #include <stdio.h>
-#include <stdlib.h>
 
 void decimal_to_complement(int decimal,char *r) { //최대저장값은 127로 저장
     if (decimal < 0) {

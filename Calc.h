@@ -9,6 +9,6 @@ void decimal_to_binary(int decimal,char *radix);
 void decimal_to_octal(int decimal, char *radix);
 void decimal_to_hexadecimal(int decimal, char *radix);
 void decimal_to_complement(int decimal,char *radix);
-int convert(int r);
+int convert();
 
 #endif
