@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+//2진수에 넣는기능 10진수를 2 8진수 2 16 ㅈ2
+
 void decimal_to_hexadecimal(int decimal,char *r) {
     printf("\n|%d의 16진수 변환과정|\n",decimal);
     if (decimal < 0){ decimal = -decimal; }

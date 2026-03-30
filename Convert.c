@@ -7,7 +7,7 @@
 void convert() { // convert 함수기능 main.c로 기능 이전됨.
     int num;
     int r;
-    char radix[10] ={0,};
+    char radix[10] ={0,}; //필요없음 레포트 제출할 때 날리고 제출
     while (r != 5) {
         r=0;//비트수 제한없어지고
         int sign =0;
@@ -18,7 +18,7 @@ void convert() { // convert 함수기능 main.c로 기능 이전됨.
         printf("양수(0)와 음수(1) 중 선택:");
         scanf("%d",&sign);
         if (sign != 0 && sign != 1) {
-            printf("0 과 1 중 하나를 선택해주세요.");
+            printf("0 과 1 중 하나를 선택해주세요.\n\n");
             continue;
         }
         if (r == 2 || r == 8 || r == 10 || r == 16) {
@@ -30,7 +30,7 @@ void convert() { // convert 함수기능 main.c로 기능 이전됨.
                 int base = 1;
                 while (temp > 0) {
                     if (temp % 10 != 0 && temp % 10 != 1) { //2진수를 입력받았을때 0또는 1이 아니라면 return값을 뱉는 로직
-                        printf("올바른 2진값을 입력하세요");
+                        printf("올바른 2진값을 입력하세요\n");
                         continue;
                     }
                     decimal += (temp % 10) * base; //2진수를 10진으로 변환하는 로직
@@ -39,43 +39,32 @@ void convert() { // convert 함수기능 main.c로 기능 이전됨.
                 }
                 if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%d", num);
+                decimal_to_binary(decimal,radix);
             } else if (r == 8) {
                 printf("8진수 입력: ");
                 scanf("%o", &num); //o형으로 입력받았으면 10진수로 자동변환되어있음
                 decimal = num;
                 if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%o", decimal);
+                decimal_to_octal(decimal,radix);
             } else if (r == 10) {
                 printf("|절대값|10진수 입력: ");
                 scanf("%d", &num);
                 decimal = num;
                 if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%d", decimal);
+                decimal_to_complement(decimal,radix);
             } else if (r == 16) {
                 printf("16진수 입력: ");
                 scanf("%x", &num);
                 decimal = num;
                 if (sign == 1) {decimal = -decimal;}
                 sprintf(radix, "%X", decimal);
+                decimal_to_hexadecimal(decimal,radix);
             } else {
                 printf("표현하는 진수중 하나를 입력해주세요.");
 
             }
-            decimal_to_binary(decimal,radix);
-            decimal_to_octal(decimal,radix);
-            decimal_to_complement(decimal,radix);
-            decimal_to_hexadecimal(decimal,radix);
-            // if (decimal <= 127 && decimal >= -128) {
-            //     decimal_to_binary(decimal,radix);
-            //     decimal_to_octal(decimal,radix);
-            //     decimal_to_complement(decimal,radix);
-            //     decimal_to_hexadecimal(decimal,radix);
-            //     printf("\n");
-            // } else {
-            //     printf("-127~127수 사이를 입력하시오\n");
-            //     printf("입력된 수 (10진변환): %d\n",decimal);
-            //
-            // }
         }
     }
 }

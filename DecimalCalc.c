@@ -39,6 +39,6 @@ void decimal_to_complement(int decimal,char *r) { //최대저장값은 127로 �
 
     printf("10의 보수: ");
     for (int i=0; i<size; i++) {printf("%d",bit[i]);} //10의보수 출력
-    printf("\n");
+    printf("\n\n");
 
 }
