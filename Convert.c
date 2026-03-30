@@ -13,7 +13,7 @@ void convert() { // convert 함수기능 main.c로 기능 이전됨.
         int sign =0;
         int decimal = 0; //10진수 0으로 초기화
         printf("(참고) 입력한 진수데이터는 10진수로 변환 후 연산됩니다.\n");
-        printf("\n2,8,10,16 진수 중 하나 입력 (5 입력시 종료): ");
+        printf("2,8,10,16 진수 중 하나 입력 (5 입력시 종료): ");
         scanf("%d",&r);
         printf("양수(0)와 음수(1) 중 선택:");
         scanf("%d",&sign);
