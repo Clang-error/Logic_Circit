@@ -3,25 +3,20 @@
 //
 
 #include <ctype.h>
-
 #include "Calc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-//2진수에 넣는기능 10진수를 2 8진수 2 16 ㅈ2
-
-void decimal_to_hexadecimal(int decimal,char *r) {
+void decimal_to_hexadecimal(int decimal) {
     printf("\n|%d의 16진수 변환과정|\n",decimal);
     if (decimal < 0){ decimal = -decimal; }
     int val=0;
-    char hex_str[10]={0,};
+    char hex_str[100]={0,};
     sprintf(hex_str, "%02X", decimal); //sprintf를 활용하여 문자열에 저장
-    // printf("%s의 16진수: ",r);
     printf("16진수: ");
     printf("%s\n", hex_str);
 
-    //15의보수 구하는 법 찾기.
     printf("15의보수: ");
    for (int i=0; i<strlen(hex_str); i++) {
        if (hex_str[i] >= '0' && hex_str[i] <= '9') { //'0'의 아스키값은 48, '9'의 아스키값은 57
