@@ -1,0 +1,8 @@
+# IDE settings
+.idea/
+
+# Build outputs
+cmake-build-debug/
+
+# macOS
+.DS_Store
