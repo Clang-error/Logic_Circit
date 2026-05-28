@@ -1,8 +1,6 @@
 
 
-#include "../Calc.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "Common.h"
 
 void convert() {
     int r1 = 0;

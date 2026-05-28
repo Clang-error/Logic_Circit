@@ -3,7 +3,7 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-#include "Calc.h"
+#include "Common.h"
 
 
 void decimal_to_binary(int decimal) {

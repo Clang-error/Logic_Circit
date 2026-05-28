@@ -3,7 +3,7 @@
 //
 
 #include <ctype.h>
-#include "Calc.h"
+#include "Common.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -6,8 +6,8 @@ set(CMAKE_C_STANDARD 11)
 add_executable(Logic_Circit
         main.c
         BinaryCalc.c
-        Calc.h
-        ComplementCalc/Convert.c
-        ComplementCalc/OctalCalc.c
-        ComplementCalc/HexaCalc.c
-        ComplementCalc/DecimalCalc.c)
+        Common.h
+        Convert.c
+        OctalCalc.c
+        HexaCalc.c
+        DecimalCalc.c)

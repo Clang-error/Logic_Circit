@@ -2,7 +2,7 @@
 // Created by GoHyeonSeok on 26. 3. 18..
 //
 
-#include "Calc.h"
+#include "Common.h"
 #include <stdio.h>
 
 void decimal_to_octal(int decimal) {

@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-#include "Calc.h"
+#include "Common.h"
 
 int main(void) {
     convert();
