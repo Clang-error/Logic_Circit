@@ -7,7 +7,7 @@ add_executable(Logic_Circit
         main.c
         BinaryCalc.c
         Calc.h
-        Convert.c
-        OctalCalc.c
-        HexaCalc.c
-        DecimalCalc.c)
+        ComplementCalc/Convert.c
+        ComplementCalc/OctalCalc.c
+        ComplementCalc/HexaCalc.c
+        ComplementCalc/DecimalCalc.c)

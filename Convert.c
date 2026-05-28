@@ -1,6 +1,6 @@
 
 
-#include "Calc.h"
+#include "../Calc.h"
 #include <stdio.h>
 #include <stdlib.h>
 
